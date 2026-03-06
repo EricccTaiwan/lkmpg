@@ -645,12 +645,11 @@ First we invent an object name for our combined module, second we tell \sh|make|
 
 \subsection{Building modules for a precompiled kernel}
 \label{sec:precompiled}
-% TODO: Recent Linux kernel images shipped with distributions should already have sufficient debugging features enabled for LKMPG.
-Obviously, we strongly suggest you to recompile your kernel, so that you can enable a number of useful debugging features,
-such as forced module unloading (\cpp|MODULE_FORCE_UNLOAD|): when this option is enabled,
+Recent Linux kernel images shipped with distributions should already have sufficient debugging features enabled for the purposes of this guide.
+If you are using an older kernel or require additional features such as forced module unloading (\cpp|MODULE_FORCE_UNLOAD|): when this option is enabled,
 you can force the kernel to unload a module even when it believes it is unsafe, via a \sh|sudo rmmod -f module| command.
 This option can save you a lot of time and a number of reboots during the development of a module.
-If you do not want to recompile your kernel then you should consider running the examples within a test distribution on a virtual machine.
+In that case, you may want to recompile your kernel with the necessary options, or consider running the examples within a test distribution on a virtual machine.
 If you mess anything up then you can easily reboot or restore the virtual machine (VM).
 
 There are a number of cases in which you may want to load your module into a precompiled running kernel,
