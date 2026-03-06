@@ -16,6 +16,11 @@ static int devicemodel_probe(struct platform_device *dev)
     struct devicemodel_data *pd =
         (struct devicemodel_data *)(dev->dev.platform_data);
 
+    if (!pd) {
+        pr_err("No platform data provided\n");
+        return -EINVAL;
+    }
+
     pr_info("devicemodel probe\n");
     pr_info("devicemodel greeting: %s; %d\n", pd->greeting, pd->number);
 
