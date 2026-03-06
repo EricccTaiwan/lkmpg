@@ -100,9 +100,9 @@ static ssize_t vinput_read(struct file *file, char __user *buffer, size_t count,
 
     len = vinput->type->ops->read(vinput, buff, count);
 
-    if (*offset > len)
+    if (*offset >= len)
         count = 0;
-    else if (count + *offset > VINPUT_MAX_LEN)
+    else if (count + *offset > (size_t)len)
         count = len - *offset;
 
     if (raw_copy_to_user(buffer, buff + *offset, count))
